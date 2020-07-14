@@ -6,13 +6,16 @@ use App\Models\PatientsModel;
 
 class Patients extends BaseController
 {
+
+	protected $title = 'Ασθενείς';
+
 	public function index()
 	{
 		$model = new PatientsModel();
 
 		$data = [
 			'patients'  => $model->find(),
-			'title' => 'Ασθενείς',
+			'title' => $this->title,
 		];
 
 		echo view('templates/header', $data);
@@ -26,7 +29,7 @@ class Patients extends BaseController
 
 		$data = [
 			'patient'  => $model->find($amka),
-			'title' => 'Επεξεργασία Ασθενή',
+			'title' => $this->title,
 			'form_action' => '/patients/update',
 			'is_new' => false
 		];
@@ -56,7 +59,7 @@ class Patients extends BaseController
 				'year_of_birth'  => $this->request->getVar('year_of_birth'),
 				'allergies'  => $this->request->getVar('allergies'),
 			],
-			'title' => 'Καταχώρηση ασθενούς',
+			'title' => $this->title,
 			'form_action' => '/patients/create',
 			'is_new' => $is_new
 		];

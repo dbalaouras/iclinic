@@ -8,6 +8,9 @@ use App\Models\PatientsModel;
 
 class Exams extends BaseController
 {
+
+	protected $title = 'Εξετάσεις';
+
 	public function index()
 	{
 		$model = new ExamsModel();
@@ -16,7 +19,7 @@ class Exams extends BaseController
 		$data = [
 			'exams'  => $model->find(),
 			'patients' => $patients_model->find(),
-			'title' => 'Εξετάσεις',
+			'title' => $this->title,
 		];
 
 		echo view('templates/header', $data);
@@ -33,7 +36,7 @@ class Exams extends BaseController
 		$data = [
 			'exam'  => $model->find($id),
 			'patients'  => $patients_model->find(),
-			'title' => 'Επεξεργασία Εξέτασης',
+			'title' => $this->title,
 			'form_action' => '/patients/update',
 			'is_new' => false
 		];
@@ -72,7 +75,7 @@ class Exams extends BaseController
 				'status'  => $this->request->getVar('status'),
 				'code'  => $this->request->getVar('code'),
 			],
-			'title' => 'Καταχώρηση εξέτασης',
+			'title' => $this->title,
 			'is_new' => $is_new
 		];
 

@@ -2,15 +2,15 @@
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
-            Eξετάσεις
+            Προβολή
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>Κωδικός Χειρουργείου</th>
                             <th>Ασθενής</th>
-                            <th>Χειρουργείο</th>
                             <th>Ιατρός</th>
                             <th>Ημερομηνία</th>
                             <th>Κατάσταση</th>
@@ -20,9 +20,9 @@
                     <tbody>
                         <?php foreach ($operations as $operation) : ?>
                             <tr>
-                                <td><?= esc($operation['patient_amka']); ?></td>
                                 <td><?= esc($operation['code']); ?></td>
-                                <td><?= esc($operation['primary_doctor_amka']); ?></td>
+                                <td><a href="/patients/<?= esc($operation['patient_amka']); ?>"><?= esc($operation['patient_first_name'] . ' ' . $operation['patient_last_name']); ?></a></td>
+                                <td><a href="/doctors/<?= esc($operation['primary_doctor_amka']); ?>"><?= esc($operation['doctor_first_name'] . ' ' . $operation['doctor_last_name']); ?></a></td>
                                 <td><?= esc($operation['scheduled_date']); ?></td>
                                 <td><?= esc($operation['status']); ?></td>
                                 <td><a href="/operations/<?= esc($operation['id'], 'url'); ?>">Επεξεργασία</a></td>

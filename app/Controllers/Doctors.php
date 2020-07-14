@@ -7,13 +7,15 @@ use App\Models\DoctorsModel;
 class Doctors extends BaseController
 {
 
+	protected $title = 'Ιατροί';
+
 	public function index()
 	{
 		$model = new DoctorsModel();
 
 		$data = [
 			'doctors'  => $model->find(),
-			'title' => 'Ιατρικό Προσωπικό',
+			'title' => $this->title,
 		];
 
 		echo view('templates/header', $data);
@@ -39,7 +41,7 @@ class Doctors extends BaseController
 			throw new \CodeIgniter\Exceptions\PageNotFoundException('Δεν βρέθηκε ο ιατρός με ΑΜΚΑ: ' . $id);
 		}
 
-		$data['title'] = 'Επεξεργασία Ιατρού';
+		$data['title'] = $this->title;
 
 		echo view('templates/header', $data);
 		echo view('doctors/form', $data);
@@ -59,7 +61,7 @@ class Doctors extends BaseController
 				'year_of_birth'  => $this->request->getVar('year_of_birth'),
 				'speciality'  => $this->request->getVar('speciality'),
 			],
-			'title' => 'Καταχώρηση ιατρού',
+			'title' => $this->title,
 			'form_action' => $is_new ? '/doctors/create' : '/doctors/update',
 			'is_new' => $is_new
 		];

@@ -1,5 +1,9 @@
 <?= \Config\Services::validation()->listErrors(); ?>
 <div class="card">
+<div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        Προσθήκη
+    </div>
     <div class="card-body">
         <form action="<?= $form_action; ?>" method="post">
             <div class="form-group row">

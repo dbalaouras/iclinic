@@ -21,9 +21,6 @@ class Operations extends BaseController
 			'title' => 'Χειρουργεία',
 		];
 
-		print_r($data['operations']);
-		exit;
-
 		echo view('templates/header', $data);
 		echo view('operations/overview', $data);
 		echo view('templates/footer', $data);
