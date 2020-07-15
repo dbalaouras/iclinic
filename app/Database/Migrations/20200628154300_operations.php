@@ -26,14 +26,12 @@ class Operations extends \CodeIgniter\Database\Migration
                 'constraint'     => '100',
             ],
             'patient_amka'       => [
-                'type'           => 'INT',
+                'type'           => 'VARCHAR',
                 'constraint'     => 10,
-                'unsigned'       => TRUE,
             ],
             'lead_doctor_amka'       => [
-                'type'           => 'INT',
+                'type'           => 'VARCHAR',
                 'constraint'     => 10,
-                'unsigned'       => TRUE
             ],
             'result'       => [
                 'type'           => 'VARCHAR',

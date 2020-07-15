@@ -51,7 +51,8 @@ class Exams extends BaseController
 			throw new \CodeIgniter\Exceptions\PageNotFoundException('Δεν βρέθηκε η εξέταση με id: ' . $id);
 		}
 
-		$data['exam']['scheduled_date_iso8601'] = date('Y-m-d\TH:i', strtotime($data['exam']['scheduled_date']));
+		$data['exam']['scheduled_date_iso8601'] = $data['exam']['scheduled_date'] ? date('Y-m-d\TH:i', strtotime($this->request->getVar('scheduled_date'))) : '';
+		
 
 		echo view('templates/header', $data);
 		echo view('exams/form', $data);
@@ -81,7 +82,7 @@ class Exams extends BaseController
 			'is_new' => $is_new
 		];
 
-		$data['exam']['scheduled_date_iso8601'] = date('Y-m-d\TH:i', strtotime($this->request->getVar('scheduled_date') ? $this->request->getVar('scheduled_date') : $data['exam']['scheduled_date']));
+		$data['exam']['scheduled_date_iso8601'] = $data['exam']['scheduled_date'] ? date('Y-m-d\TH:i', strtotime($this->request->getVar('scheduled_date'))) : '';
 
 		if ($this->request->getMethod() == 'post') {
 

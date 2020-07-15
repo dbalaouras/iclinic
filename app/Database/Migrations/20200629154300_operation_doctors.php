@@ -20,9 +20,8 @@ class OperationDoctors extends \CodeIgniter\Database\Migration
                 'unsigned'       => TRUE,
             ],
             'doctor_amka'       => [
-                'type'           => 'INT',
+                'type'           => 'VARCHAR',
                 'constraint'     => 10,
-                'unsigned'       => TRUE,
             ],
         ]);
         $this->forge->addKey('id', TRUE);

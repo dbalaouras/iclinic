@@ -33,10 +33,11 @@
                     </select>
                 </div>
             </div>
+
             <div class="form-group row">
-                <label for="scheduled_date" class="col-sm-2 col-form-label">Ημερομηνία</label>
+            <label for="scheduled_date" class="col-sm-2 col-form-label">Ημερομηνία</label>
                 <div class="col-sm-6">
-                    <input type="datetime-local" class="form-control" required="true" id="scheduled_date" name="scheduled_date" required="true" value="<?= esc($exam['scheduled_date_iso8601']); ?>">
+                    <input type="datetime-local" class="form-control" id="scheduled_date" name="scheduled_date" required="true" value="<?= esc($exam['scheduled_date_iso8601']); ?>">
                 </div>
             </div>
             <div class="form-group row">

@@ -9,18 +9,16 @@ class Patients extends \CodeIgniter\Database\Migration
     {
         $this->forge->addField([
             'amka'          => [
-                'type'           => 'INT',
+                'type'           => 'VARCHAR',
                 'constraint'     => 10,
-                'unsigned'       => TRUE,
-                'auto_increment' => FALSE
             ],
             'first_name'       => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '100',
+                'constraint'     => 100,
             ],
             'last_name'       => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '100',
+                'constraint'     => 100,
             ],
             'year_of_birth' => [
                 'type'           => 'INT',

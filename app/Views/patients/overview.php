@@ -27,7 +27,7 @@
                                 <td><?= esc($patient['year_of_birth']); ?></td>
                                 <td>
                                     <a title="Επεξεργασία" href="/patients/<?= esc($patient['amka'], 'url'); ?>"><i class="fas fa-edit"></i></a>
-                                    <a title="Διαγραφή" href="#" data-href="/patients/delete/<?= esc($patient['amka'], 'url'); ?>"" data-toggle=" modal" data-target="#confirm-delete">
+                                    <a href="#" data-href="/patients/delete/<?= esc($patient['amka'], 'url'); ?>"" data-toggle="modal" data-target="#confirm-delete">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                     <a href="/operations/?patient_amka=<?= esc($patient['amka'], 'url'); ?>" title="Χειρουργεία">

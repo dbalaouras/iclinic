@@ -25,9 +25,8 @@ class Exams extends \CodeIgniter\Database\Migration
                 'constraint'     => '100',
             ],
             'patient_amka'       => [
-                'type'           => 'INT',
+                'type'           => 'VARCHAR',
                 'constraint'     => 10,
-                'unsigned'       => TRUE,
                 'null' => TRUE,
             ],
         ]);

@@ -15,9 +15,8 @@ class Stay extends \CodeIgniter\Database\Migration
                 'auto_increment' => TRUE,
             ],
             'patient_amka'       => [
-                'type'           => 'INT',
+                'type'           => 'VARCHAR',
                 'constraint'     => 10,
-                'unsigned'       => TRUE,
             ],
             'start_datetime'     => [
                 'type'           => 'timestamp',

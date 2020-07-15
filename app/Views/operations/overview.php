@@ -27,7 +27,7 @@
                                 <td><?= esc($operation['status']); ?></td>
                                 <td>
                                     <a href="/operations/<?= esc($operation['id'], 'url'); ?>"><i class="fas fa-edit"></i></a>
-                                    <a href="#" data-href="/operations/delete/<?= esc($operation['id'], 'url'); ?>"" data-toggle=" modal" data-target="#confirm-delete">
+                                    <a href="#" data-href="/operations/delete/<?= esc($operation['id'], 'url'); ?>"" data-toggle="modal" data-target="#confirm-delete">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>
