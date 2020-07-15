@@ -14,8 +14,11 @@ class Operations extends BaseController
 		$patients_model = new PatientsModel();
 		$doctors_model = new DoctorsModel();
 
+		$lead_doctor_amka = $this->request->getVar('lead_doctor_amka');
+		$patient_amka = $this->request->getVar('patient_amka');
+
 		$data = [
-			'operations'  => $model->getOperationsFull(),
+			'operations'  => $model->getOperationsFull($lead_doctor_amka, $patient_amka),
 			'patients'  => $patients_model->find(),
 			'doctors' => $doctors_model->find(),
 			'title' => 'Χειρουργεία',
@@ -28,7 +31,6 @@ class Operations extends BaseController
 		if ($this->request->getVar('delete_success')) {
 			$data['messages'] =  "Επιτυχής διαγραφή.";
 		}
-
 
 		echo view('templates/header', $data);
 		echo view('operations/overview', $data);
@@ -115,7 +117,7 @@ class Operations extends BaseController
 					$model->update($id, $data['operation']);
 				}
 
-				return redirect()->to($this->getListPath(). '?update_success=1');
+				return redirect()->to($this->getListPath() . '?update_success=1');
 			}
 		}
 

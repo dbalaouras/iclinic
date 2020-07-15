@@ -30,6 +30,9 @@
                                     <a href="#" data-href="/doctors/delete/<?= esc($doctor['amka'], 'url'); ?>"" data-toggle="modal" data-target="#confirm-delete">
                                         <i class="fas fa-trash"></i>
                                     </a>
+                                    <a href="/operations/?lead_doctor_amka=<?= esc($doctor['amka'], 'url'); ?>">
+                                        <i class="fas fa-procedures"></i>
+                                    </a>
                                 </td>
                                 
                             </tr>

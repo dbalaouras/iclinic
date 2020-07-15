@@ -16,8 +16,10 @@ class Exams extends BaseController
 		$model = new ExamsModel();
 		$patients_model = new PatientsModel();
 
+		$patient_amka = $this->request->getVar('patient_amka');
+
 		$data = [
-			'exams'  => $model->find(),
+			'exams'  => $model->getExamsFull($patient_amka),
 			'patients' => $patients_model->find(),
 			'title' => $this->title,
 		];
@@ -115,7 +117,7 @@ class Exams extends BaseController
 					]);
 				}
 
-				return redirect()->to($this->getListPath(). '?update_success=1');
+				return redirect()->to($this->getListPath() . '?update_success=1');
 			}
 		}
 

@@ -2,7 +2,7 @@
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
-            Προβολή | <a href="/exams/create" class="active" role="button" aria-pressed="true">Προσθήκη</a>
+            <a href="/exams" class="active" role="button" aria-pressed="true">Προβολή Όλων</a> | <a href="/exams/create" class="active" role="button" aria-pressed="true">Προσθήκη</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -19,7 +19,7 @@
                     <tbody>
                         <?php foreach ($exams as $exam) : ?>
                             <tr>
-                                <td><?= esc($exam['patient_amka']); ?></td>
+                                <td><a href="/patients/<?= esc($exam['patient_amka']); ?>"><?= esc($exam['patient_first_name'] . ' ' . $exam['patient_last_name']); ?></a></td>
                                 <td><?= esc($exam['code']); ?></td>
                                 <td><?= esc($exam['scheduled_date']); ?></td>
                                 <td><?= esc($exam['status']); ?></td>

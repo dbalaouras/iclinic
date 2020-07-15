@@ -26,9 +26,15 @@
                                 <td><?= esc($patient['last_name']); ?></td>
                                 <td><?= esc($patient['year_of_birth']); ?></td>
                                 <td>
-                                    <a href="/patients/<?= esc($patient['amka'], 'url'); ?>"><i class="fas fa-edit"></i></a>
-                                    <a href="#" data-href="/patients/delete/<?= esc($patient['amka'], 'url'); ?>"" data-toggle="modal" data-target="#confirm-delete">
+                                    <a title="Επεξεργασία" href="/patients/<?= esc($patient['amka'], 'url'); ?>"><i class="fas fa-edit"></i></a>
+                                    <a title="Διαγραφή" href="#" data-href="/patients/delete/<?= esc($patient['amka'], 'url'); ?>"" data-toggle=" modal" data-target="#confirm-delete">
                                         <i class="fas fa-trash"></i>
+                                    </a>
+                                    <a href="/operations/?patient_amka=<?= esc($patient['amka'], 'url'); ?>" title="Χειρουργεία">
+                                        <i class="fas fa-procedures"></i>
+                                    </a>
+                                    <a href="/exams/?patient_amka=<?= esc($patient['amka'], 'url'); ?>" title="Εξετάσεις">
+                                        <i class="fas fa-notes-medical"></i>
                                     </a>
                                 </td>
                             </tr>
