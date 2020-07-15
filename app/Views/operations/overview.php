@@ -2,7 +2,7 @@
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
-            <a href="/operations/γιτ " class="active" role="button" aria-pressed="true">Προβολή όλων</a> | <a href="/operations/create" class="active" role="button" aria-pressed="true">Προσθήκη</a>
+            <a href="/operations/ " class="active" role="button" aria-pressed="true">Προβολή όλων</a> | <a href="/operations/create" class="active" role="button" aria-pressed="true">Προσθήκη</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
