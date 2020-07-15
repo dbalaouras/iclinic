@@ -25,7 +25,7 @@
                                 <td><?= esc($stay['exit_notes']); ?></td>
                                 <td>
                                     <a href="/stays/<?= esc($stay['id'], 'url'); ?>"><i class="fas fa-edit"></i></a>
-                                    <a href="#" data-href="/stays/delete/<?= esc($stay['id'], 'url'); ?>"" data-toggle=" modal" data-target="#confirm-delete">
+                                    <a href="#" data-href="/stays/delete/<?= esc($stay['id'], 'url'); ?>"" data-toggle="modal" data-target="#confirm-delete">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>
