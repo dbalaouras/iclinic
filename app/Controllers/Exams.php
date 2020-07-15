@@ -22,6 +22,10 @@ class Exams extends BaseController
 			'title' => $this->title,
 		];
 
+		if ($this->request->getVar('update_success')) {
+			$data['messages'] =  "Επιτυχής αποθήκευση.";
+		}
+
 		echo view('templates/header', $data);
 		echo view('exams/overview', $data);
 		echo view('templates/footer', $data);
@@ -46,11 +50,6 @@ class Exams extends BaseController
 		}
 
 		$data['exam']['scheduled_date_iso8601'] = date('Y-m-d\TH:i', strtotime($data['exam']['scheduled_date']));
-
-		if ($this->request->getVar('update_success')) {
-			$data['messages'] =  "Επιτυχής αποθήκευση.";
-		}
-
 
 		echo view('templates/header', $data);
 		echo view('exams/form', $data);
@@ -116,7 +115,7 @@ class Exams extends BaseController
 					]);
 				}
 
-				return redirect()->to('/exams/' . $id . '?update_success=1');
+				return redirect()->to($this->getListPath(). '?update_success=1');
 			}
 		}
 

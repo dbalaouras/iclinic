@@ -21,6 +21,15 @@ class Operations extends BaseController
 			'title' => 'Χειρουργεία',
 		];
 
+		if ($this->request->getVar('update_success')) {
+			$data['messages'] =  "Επιτυχής αποθήκευση.";
+		}
+
+		if ($this->request->getVar('delete_success')) {
+			$data['messages'] =  "Επιτυχής διαγραφή.";
+		}
+
+
 		echo view('templates/header', $data);
 		echo view('operations/overview', $data);
 		echo view('templates/footer', $data);
@@ -40,10 +49,6 @@ class Operations extends BaseController
 			'form_action' => '/operations/update',
 			'is_new' => false
 		];
-
-		if ($this->request->getVar('update_success')) {
-			$data['messages'] =  "Επιτυχής αποθήκευση.";
-		}
 
 		if (empty($data['operation'])) {
 			throw new \CodeIgniter\Exceptions\PageNotFoundException('Δεν βρέθηκε το χειρουργείο με id: ' . $id);
@@ -75,6 +80,7 @@ class Operations extends BaseController
 				'scheduled_date'  => $this->request->getVar('scheduled_date'),
 				'status'  => $this->request->getVar('status'),
 				'code'  => $this->request->getVar('code'),
+				'result'  => $this->request->getVar('result'),
 			],
 			'title' => 'Καταχώρηση Χειρουργείου',
 			'is_new' => $is_new,
@@ -109,7 +115,7 @@ class Operations extends BaseController
 					$model->update($id, $data['operation']);
 				}
 
-				return redirect()->to('/operations/' . $id . '?update_success=1');
+				return redirect()->to($this->getListPath(). '?update_success=1');
 			}
 		}
 

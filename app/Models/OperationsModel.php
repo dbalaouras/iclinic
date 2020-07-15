@@ -6,7 +6,7 @@ class OperationsModel extends BaseModel
 {
     protected $table = 'operations';
     protected $returnType = 'array';
-    protected $allowedFields = ['code', 'scheduled_date', 'status', 'patient_amka', 'lead_doctor_amka'];
+    protected $allowedFields = ['code', 'scheduled_date', 'status', 'patient_amka', 'lead_doctor_amka', 'result'];
 
     public function getOperationsFull()
     {

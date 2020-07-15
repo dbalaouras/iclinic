@@ -60,6 +60,12 @@
                     </select>
                 </div>
             </div>
+            <div class="form-group row">
+                <label for="result" class="col-sm-2 col-form-label">Έκθεση Χειρουργείου</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="result"><?= esc($operation['result']); ?></textarea>
+                </div>
+            </div>
             <button type="submit" class="btn btn-primary">Αποθήκευση</button>
         </form>
     </div>

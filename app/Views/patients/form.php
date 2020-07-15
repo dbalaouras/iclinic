@@ -16,7 +16,7 @@
                     <?php
                     } else {
                     ?>
-                        <input type="text" required="true" readonly class="form-control-plaintext" id="amka" name="amka" maxlength="10" value="<?= esc($patient['amka']); ?>">
+                        <input type="text" required="true" readonly class="form-control-plaintext" id="amka" name="amka"  maxlength="10"value="<?= esc($patient['amka']); ?>">
                     <?php
                     }
                     ?>

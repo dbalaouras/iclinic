@@ -35,6 +35,10 @@ class Operations extends \CodeIgniter\Database\Migration
                 'constraint'     => 10,
                 'unsigned'       => TRUE
             ],
+            'result'       => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255',
+            ],
         ]);
         $this->forge->addKey('id', TRUE);
         

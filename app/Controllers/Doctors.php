@@ -18,6 +18,14 @@ class Doctors extends BaseController
 			'title' => $this->title,
 		];
 
+		if ($this->request->getVar('update_success')) {
+			$data['messages'] =  "Επιτυχής αποθήκευση.";
+		}
+
+		if ($this->request->getVar('delete_success')) {
+			$data['messages'] =  "Επιτυχής διαγραφή.";
+		}
+
 		echo view('templates/header', $data);
 		echo view('doctors/overview', $data);
 		echo view('templates/footer', $data);
@@ -32,10 +40,6 @@ class Doctors extends BaseController
 			'form_action' => '/doctors/update',
 			'is_new' => false
 		];
-
-		if ($this->request->getVar('update_success')) {
-			$data['messages'] =  "Επιτυχής αποθήκευση.";
-		}
 
 		if (empty($data['doctor'])) {
 			throw new \CodeIgniter\Exceptions\PageNotFoundException('Δεν βρέθηκε ο ιατρός με ΑΜΚΑ: ' . $id);
@@ -77,7 +81,11 @@ class Doctors extends BaseController
 					'speciality'  => 'required',
 				],
 				[
-					'amka' => ['required' => 'Παρακαλώ συμπληρώστε το ΑΜΚΑ', 'min_length' => 'Το ΑΜΚΑ πρέπει να είναι τουλάχιστον 8 χαρακτήρες'],
+					'amka' => [
+						'required' => 'Παρακαλώ συμπληρώστε το ΑΜΚΑ',
+						'min_length' => 'Το ΑΜΚΑ πρέπει να είναι τουλάχιστον 8 χαρακτήρες',
+						'max_length' => 'Το ΑΜΚΑ πρέπει να είναι το πολύ 10 χαρακτήρες'
+					],
 					'first_name'  => ['required' => 'Παρακαλώ συμπληρώστε το Όνομα'],
 					'last_name'  => ['required' => 'Παρακαλώ συμπληρώστε το Επώνυμο'],
 					'year_of_birth'  => ['required' => 'Παρακαλώ συμπληρώστε το έτος γέννησης'],
@@ -89,9 +97,10 @@ class Doctors extends BaseController
 				if ($is_new) {
 					$model->insert($data['doctor']);
 				} else {
+					var_dump($data['doctor']);
 					$model->update($this->request->getVar('amka'), $data['doctor']);
 				}
-				return redirect()->to('/doctors/' . $this->request->getVar('amka') . '?update_success=1');
+				return redirect()->to($this->getListPath() . '?update_success=1');
 			}
 		}
 		echo view('templates/header', $data);

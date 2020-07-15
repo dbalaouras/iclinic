@@ -18,6 +18,14 @@ class Patients extends BaseController
 			'title' => $this->title,
 		];
 
+		if ($this->request->getVar('update_success')) {
+			$data['messages'] =  "Επιτυχής αποθήκευση.";
+		}
+
+		if ($this->request->getVar('delete_success')) {
+			$data['messages'] =  "Επιτυχής διαγραφή.";
+		}
+
 		echo view('templates/header', $data);
 		echo view('patients/overview', $data);
 		echo view('templates/footer', $data);
@@ -33,10 +41,6 @@ class Patients extends BaseController
 			'form_action' => '/patients/update',
 			'is_new' => false
 		];
-
-		if ($this->request->getVar('update_success')) {
-			$data['messages'] =  "Επιτυχής αποθήκευση.";
-		}
 
 		if (empty($data['patient'])) {
 			throw new \CodeIgniter\Exceptions\PageNotFoundException('Δεν βρέθηκε ο ασθενής με ΑΜΚΑ: ' . $amka);
@@ -92,7 +96,7 @@ class Patients extends BaseController
 					$model->update($this->request->getVar('amka'), $data['patient']);
 				}
 
-				return redirect()->to('/patients/' . $this->request->getVar('amka') . '?update_success=1');
+				return redirect()->to($this->getListPath() . '?update_success=1');
 			}
 		}
 

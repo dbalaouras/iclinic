@@ -22,6 +22,13 @@ class Stays extends BaseController
 			'title' => $this->title,
 		];
 
+		if ($this->request->getVar('update_success')) {
+			$data['messages'] =  "Επιτυχής αποθήκευση.";
+		}
+		if ($this->request->getVar('delete_success')) {
+			$data['messages'] =  "Επιτυχής διαγραφή.";
+		}
+
 		echo view('templates/header', $data);
 		echo view('stays/overview', $data);
 		echo view('templates/footer', $data);
@@ -46,10 +53,6 @@ class Stays extends BaseController
 
 		$data['stay']['start_datetime_iso8601'] = $data['stay']['start_datetime'] ? date('Y-m-d\TH:i', strtotime($data['stay']['start_datetime'])) : '';
 		$data['stay']['end_datetime_iso8601'] = $data['stay']['end_datetime'] ? date('Y-m-d\TH:i', strtotime($data['stay']['end_datetime'])) : '';
-
-		if ($this->request->getVar('update_success')) {
-			$data['messages'] =  "Επιτυχής αποθήκευση.";
-		}
 
 		echo view('templates/header', $data);
 		echo view('stays/form', $data);
@@ -101,7 +104,7 @@ class Stays extends BaseController
 					$model->update($id, $data['stay']);
 				}
 
-				return redirect()->to('/stays/' . $id . '?update_success=1');
+				return redirect()->to($this->getListPath(). '?update_success=1');
 			}
 		}
 
@@ -118,7 +121,7 @@ class Stays extends BaseController
 		return new StaysModel();
 	}
 
-		/**
+	/**
 	 * Get path to contoller list view
 	 */
 	protected function getListPath()
