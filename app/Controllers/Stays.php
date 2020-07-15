@@ -17,7 +17,7 @@ class Stays extends BaseController
 		$patients_model = new PatientsModel();
 
 		$data = [
-			'stays'  => $model->find(),
+			'stays'  => $model->getStaysFull(),
 			'patients' => $patients_model->find(),
 			'title' => $this->title,
 		];

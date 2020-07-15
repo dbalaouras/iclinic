@@ -19,13 +19,13 @@
                     <tbody>
                         <?php foreach ($stays as $stay) : ?>
                             <tr>
-                                <td><?= esc($stay['patient_amka']); ?></td>
+                                <td><a href="/patients/<?= esc($stay['patient_amka']); ?>"><?= esc($stay['patient_first_name'] . ' ' . $stay['patient_last_name']); ?></a></td>
                                 <td><?= esc($stay['start_datetime']); ?></td>
                                 <td><?= esc($stay['end_datetime']); ?></td>
                                 <td><?= esc($stay['exit_notes']); ?></td>
                                 <td>
                                     <a href="/stays/<?= esc($stay['id'], 'url'); ?>"><i class="fas fa-edit"></i></a>
-                                    <a href="#" data-href="/stays/delete/<?= esc($stay['id'], 'url'); ?>"" data-toggle="modal" data-target="#confirm-delete">
+                                    <a href="#" data-href="/stays/delete/<?= esc($stay['id'], 'url'); ?>"" data-toggle=" modal" data-target="#confirm-delete">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>

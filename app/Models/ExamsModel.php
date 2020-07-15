@@ -8,6 +8,9 @@ class ExamsModel extends BaseModel
 
     protected $allowedFields = ['code', 'scheduled_date', 'status', 'patient_amka'];
 
+    /**
+     * Get exams with patient info
+     */
     public function getExamsFull($patient_amka = false)
     {
         $query = $this->select(
