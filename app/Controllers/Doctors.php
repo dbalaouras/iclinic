@@ -106,4 +106,12 @@ class Doctors extends BaseController
 	{
 		return new DoctorsModel();
 	}
+
+	/**
+	 * Get path to contoller list view
+	 */
+	protected function getListPath()
+	{
+		return '/doctors';
+	}
 }

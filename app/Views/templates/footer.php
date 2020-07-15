@@ -22,8 +22,30 @@
 <script>
     $(document).ready(function() {
         $('#dataTable').DataTable();
+
+        $('#confirm-delete').on('show.bs.modal', function(e) {
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        });
     });
 </script>
+
+
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                Είστε σίγουρος/η πως θέλετε να διαγράψετε την εγγραφή;
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Άκυρο</button>
+                <a class="btn btn-danger btn-ok">Ναι, οριστική διαγραφή.</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 
 </html>

@@ -117,4 +117,12 @@ class Stays extends BaseController
 	{
 		return new StaysModel();
 	}
+
+		/**
+	 * Get path to contoller list view
+	 */
+	protected function getListPath()
+	{
+		return '/stays';
+	}
 }

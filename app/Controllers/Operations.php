@@ -125,4 +125,12 @@ class Operations extends BaseController
 	{
 		return new OperationsModel();
 	}
+
+	/**
+	 * Get path to contoller list view
+	 */
+	protected function getListPath()
+	{
+		return '/operations';
+	}
 }

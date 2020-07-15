@@ -25,7 +25,13 @@
                                 <td><?= esc($doctor['last_name']); ?></td>
                                 <td><?= esc($doctor['year_of_birth']); ?></td>
                                 <td><?= esc($doctor['speciality']); ?></td>
-                                <td><a href="/doctors/<?= esc($doctor['amka'], 'url'); ?>">Επεξεργασία</a></td>
+                                <td>
+                                    <a href="/doctors/<?= esc($doctor['amka'], 'url'); ?>"><i class="fas fa-edit"></i></a>
+                                    <a href="#" data-href="/doctors/delete/<?= esc($doctor['amka'], 'url'); ?>"" data-toggle="modal" data-target="#confirm-delete">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                                
                             </tr>
                             <p></p>
                         <?php endforeach; ?>

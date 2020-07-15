@@ -2,7 +2,7 @@
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
-            Προβολή | 
+            Προβολή |
             <a href="/patients/create" class="active" role="button" aria-pressed="true">Προσθήκη</a>
         </div>
         <div class="card-body">
@@ -25,7 +25,12 @@
                                 <td><?= esc($patient['first_name']); ?></td>
                                 <td><?= esc($patient['last_name']); ?></td>
                                 <td><?= esc($patient['year_of_birth']); ?></td>
-                                <td><a href="/patients/<?= esc($patient['amka'], 'url'); ?>">Επεξεργασία</a></td>
+                                <td>
+                                    <a href="/patients/<?= esc($patient['amka'], 'url'); ?>"><i class="fas fa-edit"></i></a>
+                                    <a href="#" data-href="/patients/delete/<?= esc($patient['amka'], 'url'); ?>"" data-toggle="modal" data-target="#confirm-delete">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
                             </tr>
                             <p></p>
                         <?php endforeach; ?>

@@ -34,26 +34,31 @@ $routes->setAutoRoute(true);
 $routes->match(['get', 'post'], 'doctors/create', 'Doctors::create');
 $routes->match(['get', 'post'], 'doctors/update', 'Doctors::update');
 $routes->get('doctors/(:segment)', 'Doctors::edit/$1');
+$routes->get('doctors/delete/(:segment)', 'Doctors::delete/$1');
 $routes->get('doctors', 'Doctors::index');
 
 $routes->match(['get', 'post'], 'patients/create', 'Patients::create');
 $routes->match(['get', 'post'], 'patients/update', 'Patients::update');
 $routes->get('patients/(:segment)', 'Patients::edit/$1');
+$routes->get('patients/delete/(:segment)', 'Patients::delete/$1');
 $routes->get('patients', 'Patients::index');
 
 $routes->match(['get', 'post'], 'operations/create', 'Operations::create');
 $routes->match(['get', 'post'], 'operations/update', 'Operations::update');
 $routes->get('operations/(:segment)', 'Operations::edit/$1');
+$routes->get('operations/delete/(:segment)', 'Operations::delete/$1');
 $routes->get('operations', 'Operations::index');
 
 $routes->match(['get', 'post'], 'exams/create', 'Exams::create');
 $routes->match(['get', 'post'], 'exams/update', 'Exams::update');
 $routes->get('exams/(:segment)', 'Exams::edit/$1');
+$routes->get('exams/delete/(:segment)', 'Exams::delete/$1');
 $routes->get('exams', 'Exams::index');
 
 $routes->match(['get', 'post'], 'stays/create', 'Stays::create');
 $routes->match(['get', 'post'], 'stays/update', 'Stays::update');
 $routes->get('stays/(:segment)', 'Stays::edit/$1');
+$routes->get('stays/delete/(:segment)', 'Stays::delete/$1');
 $routes->get('stays', 'Stays::index');
 
 $routes->get('(:any)', 'Home::index/$1');

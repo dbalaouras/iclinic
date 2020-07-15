@@ -67,19 +67,26 @@ abstract class BaseController extends Controller
 	 */
 	protected abstract function store($is_new);
 
-
 	/**
 	 * Get an instance of the main Model of this controller
 	 */
 	protected abstract function getModel();
 
 	/**
+	 * Get path to contoller list view
+	 */
+	protected abstract function getListPath();
+
+	/**
 	 * Delete a record from the main model given it's id
 	 */
 	public function delete($id = null)
 	{
-		$model = $this->getModel();
 
-		$model->delete($id);
+		// delete record
+		$this->getModel()->delete($id);
+
+		// redirect to list view
+		return redirect()->to($this->getListPath());
 	}
 }

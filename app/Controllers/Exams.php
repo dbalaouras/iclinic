@@ -132,4 +132,12 @@ class Exams extends BaseController
 	{
 		return new ExamsModel();
 	}
+
+	/**
+	 * Get path to contoller list view
+	 */
+	protected function getListPath()
+	{
+		return '/exams';
+	}
 }

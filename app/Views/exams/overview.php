@@ -23,7 +23,12 @@
                                 <td><?= esc($exam['code']); ?></td>
                                 <td><?= esc($exam['scheduled_date']); ?></td>
                                 <td><?= esc($exam['status']); ?></td>
-                                <td><a href="/exams/<?= esc($exam['id'], 'url'); ?>">Επεξεργασία</a></td>
+                                <td>
+                                    <a href="/exams/<?= esc($exam['id'], 'url'); ?>"><i class="fas fa-edit"></i></a>
+                                    <a href="#" data-href="/exams/delete/<?= esc($exam['id'], 'url'); ?>"" data-toggle="modal" data-target="#confirm-delete">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
                             </tr>
                             <p></p>
                         <?php endforeach; ?>

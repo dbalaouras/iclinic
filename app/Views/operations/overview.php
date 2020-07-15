@@ -25,7 +25,12 @@
                                 <td><a href="/doctors/<?= esc($operation['lead_doctor_amka']); ?>"><?= esc($operation['doctor_first_name'] . ' ' . $operation['doctor_last_name']); ?></a></td>
                                 <td><?= esc($operation['scheduled_date']); ?></td>
                                 <td><?= esc($operation['status']); ?></td>
-                                <td><a href="/operations/<?= esc($operation['id'], 'url'); ?>">Επεξεργασία</a></td>
+                                <td>
+                                    <a href="/operations/<?= esc($operation['id'], 'url'); ?>"><i class="fas fa-edit"></i></a>
+                                    <a href="#" data-href="/operations/delete/<?= esc($operation['id'], 'url'); ?>"" data-toggle=" modal" data-target="#confirm-delete">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
                             </tr>
                             <p></p>
                         <?php endforeach; ?>
@@ -34,7 +39,7 @@
             </div>
         </div>
     </div>
-    <?php else : ?>
+<?php else : ?>
     <div class="card mb-4">
         <div class="card-body">
             <div class="table-responsive">
