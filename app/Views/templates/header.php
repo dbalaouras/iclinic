@@ -98,8 +98,8 @@
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        administrator
+                        <div class="small">Συνδεδεμένος Χρήστης:</div>
+                        Διαχειριστής
                     </div>
                 </nav>
             </div>

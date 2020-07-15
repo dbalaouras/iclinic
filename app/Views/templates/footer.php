@@ -5,9 +5,9 @@
         <div class="d-flex align-items-center justify-content-between small">
             <div class="text-muted">Copyright &copy; Ψηφιακή Κλινική 2020</div>
             <div>
-                <a href="#">Privacy Policy</a>
+                <a href="#">Πολιτική Απορρήτου</a>
                 &middot;
-                <a href="#">Terms &amp; Conditions</a>
+                <a href="#">Όροι &amp; Προϋποθέσεις</a>
             </div>
         </div>
     </div>
