@@ -2,7 +2,8 @@
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
-            Προβολή
+            Προβολή | 
+            <a href="/patients/create" class="active" role="button" aria-pressed="true">Προσθήκη</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -34,18 +35,12 @@
         </div>
     </div>
 <?php else : ?>
-
     <div class="card mb-4">
-        <div class="card-header">
-            <i class="fas fa-table mr-1"></i>
-            Ασθενείς
-        </div>
         <div class="card-body">
             <div class="table-responsive">
-                <p>Δεν υπάρχουν καταχωρημένοι Ασθενείς.</p>
+                <p>Δεν υπάρχουν καταχωρήσεις</p>
                 <a href="/patients/create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Προσθήκη</a>
             </div>
         </div>
     </div>
-
 <?php endif ?>

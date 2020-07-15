@@ -37,7 +37,7 @@ class Exams extends BaseController
 			'exam'  => $model->find($id),
 			'patients'  => $patients_model->find(),
 			'title' => $this->title,
-			'form_action' => '/patients/update',
+			'form_action' => '/exams/update',
 			'is_new' => false
 		];
 
@@ -48,7 +48,7 @@ class Exams extends BaseController
 		$data['exam']['scheduled_date_iso8601'] = date('Y-m-d\TH:i', strtotime($data['exam']['scheduled_date']));
 
 		if ($this->request->getVar('update_success')) {
-			$data['messages'] =  "Επιτυχής ενημέρωση εξέτασης.";
+			$data['messages'] =  "Επιτυχής αποθήκευση.";
 		}
 
 
@@ -75,11 +75,12 @@ class Exams extends BaseController
 				'status'  => $this->request->getVar('status'),
 				'code'  => $this->request->getVar('code'),
 			],
+			'form_action' => '/exams/create',
 			'title' => $this->title,
 			'is_new' => $is_new
 		];
 
-		$data['exam']['scheduled_date_iso8601'] = $data['exam']['scheduled_date'] ? date('Y-m-d\TH:i', strtotime($this->request->getVar('scheduled_date'))) : '';
+		$data['exam']['scheduled_date_iso8601'] = date('Y-m-d\TH:i', strtotime($this->request->getVar('scheduled_date') ? $this->request->getVar('scheduled_date') : $data['exam']['scheduled_date']));
 
 		if ($this->request->getMethod() == 'post') {
 
@@ -122,5 +123,13 @@ class Exams extends BaseController
 		echo view('templates/header', $data);
 		echo view('exams/form', $data);
 		echo view('templates/footer', $data);
+	}
+
+	/**
+	 * Get an instance of the main Model of this controller
+	 */
+	public function getModel()
+	{
+		return new ExamsModel();
 	}
 }

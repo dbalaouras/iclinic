@@ -31,14 +31,17 @@ class Patients extends \CodeIgniter\Database\Migration
             'allergies'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '65535',
+                'null'           => true,
             ],
             'medical_history'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '65535',
+                'null'           => true,
             ],
             'medication'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '65535',
+                'null'           => true,
             ],
         ]);
         $this->forge->addKey('amka', TRUE);

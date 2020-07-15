@@ -2,7 +2,7 @@
 
 namespace App\Database\Migrations;
 
-class Exams extends \CodeIgniter\Database\Migration
+class OperationDoctors extends \CodeIgniter\Database\Migration
 {
 
     public function up()

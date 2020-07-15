@@ -11,7 +11,7 @@ class Patients extends BaseController
 
 	public function index()
 	{
-		$model = new PatientsModel();
+		$model = $this->getModel();
 
 		$data = [
 			'patients'  => $model->find(),
@@ -25,7 +25,7 @@ class Patients extends BaseController
 
 	public function edit($amka = null)
 	{
-		$model = new PatientsModel();
+		$model = $this->getModel();
 
 		$data = [
 			'patient'  => $model->find($amka),
@@ -35,7 +35,7 @@ class Patients extends BaseController
 		];
 
 		if ($this->request->getVar('update_success')) {
-			$data['messages'] =  "Επιτυχής αποθήκευση ασθενούς.";
+			$data['messages'] =  "Επιτυχής αποθήκευση.";
 		}
 
 		if (empty($data['patient'])) {
@@ -49,7 +49,7 @@ class Patients extends BaseController
 
 	protected function store($is_new = true)
 	{
-		$model = new PatientsModel();
+		$model = $this->getModel();
 
 		$data = [
 			'patient'  => [
@@ -58,6 +58,8 @@ class Patients extends BaseController
 				'last_name'  => $this->request->getVar('last_name'),
 				'year_of_birth'  => $this->request->getVar('year_of_birth'),
 				'allergies'  => $this->request->getVar('allergies'),
+				'medication'  => $this->request->getVar('medication'),
+				'medical_history'  => $this->request->getVar('medical_history'),
 			],
 			'title' => $this->title,
 			'form_action' => '/patients/create',
@@ -67,13 +69,17 @@ class Patients extends BaseController
 		if ($this->request->getMethod() == 'post') {
 			if (!$this->validate(
 				[
-					'amka' => 'required|min_length[8]|max_length[255]',
+					'amka' => 'required|min_length[8]|max_length[10]',
 					'first_name'  => 'required',
 					'last_name'  => 'required',
 					'year_of_birth'  => 'required',
 				],
 				[
-					'amka' => ['required' => 'Παρακαλώ συμπληρώστε το ΑΜΚΑ', 'min_length' => 'Το ΑΜΚΑ πρέπει να είναι τουλάχιστον 8 χαρακτήρες'],
+					'amka' => [
+						'required' => 'Παρακαλώ συμπληρώστε το ΑΜΚΑ',
+						'min_length' => 'Το ΑΜΚΑ πρέπει να είναι τουλάχιστον 8 χαρακτήρες',
+						'max_length' => 'Το ΑΜΚΑ πρέπει να είναι το πολύ 10 χαρακτήρες'
+					],
 					'first_name'  => ['required' => 'Παρακαλώ συμπληρώστε το Όνομα'],
 					'last_name'  => ['required' => 'Παρακαλώ συμπληρώστε το Επώνυμο'],
 					'year_of_birth'  => ['required' => 'Παρακαλώ συμπληρώστε το έτος γέννησης'],
@@ -93,5 +99,13 @@ class Patients extends BaseController
 		echo view('templates/header', $data);
 		echo view('patients/form', $data);
 		echo view('templates/footer', $data);
+	}
+
+	/**
+	 * Get an instance of the main Model of this controller
+	 */
+	public function getModel()
+	{
+		return new PatientsModel();
 	}
 }

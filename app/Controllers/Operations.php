@@ -10,7 +10,7 @@ class Operations extends BaseController
 {
 	public function index()
 	{
-		$model = new OperationsModel();
+		$model = $this->getModel();
 		$patients_model = new PatientsModel();
 		$doctors_model = new DoctorsModel();
 
@@ -28,7 +28,7 @@ class Operations extends BaseController
 
 	public function edit($id = null)
 	{
-		$model = new OperationsModel();
+		$model = $this->getModel();
 		$patients_model = new PatientsModel();
 		$doctors_model = new DoctorsModel();
 
@@ -42,7 +42,7 @@ class Operations extends BaseController
 		];
 
 		if ($this->request->getVar('update_success')) {
-			$data['messages'] =  "Επιτυχής ενημέρωση χειρουργείου.";
+			$data['messages'] =  "Επιτυχής αποθήκευση.";
 		}
 
 		if (empty($data['operation'])) {
@@ -61,7 +61,7 @@ class Operations extends BaseController
 	protected function store($is_new)
 	{
 
-		$model = new OperationsModel();
+		$model = $this->getModel();
 		$patients_model = new PatientsModel();
 		$doctors_model = new DoctorsModel();
 
@@ -71,13 +71,14 @@ class Operations extends BaseController
 			'operation'  => [
 				'id' => '',
 				'patient_amka'  => $this->request->getVar('patient_amka'),
-				'primary_doctor_amka'  => $this->request->getVar('primary_doctor_amka'),
+				'lead_doctor_amka'  => $this->request->getVar('lead_doctor_amka'),
 				'scheduled_date'  => $this->request->getVar('scheduled_date'),
 				'status'  => $this->request->getVar('status'),
 				'code'  => $this->request->getVar('code'),
 			],
 			'title' => 'Καταχώρηση Χειρουργείου',
-			'is_new' => $is_new
+			'is_new' => $is_new,
+			'form_action' => '/operations/create',
 		];
 
 		$data['operation']['scheduled_date_iso8601'] = $data['operation']['scheduled_date'] ? date('Y-m-d\TH:i', strtotime($this->request->getVar('scheduled_date'))) : '';
@@ -87,14 +88,14 @@ class Operations extends BaseController
 			if (!$this->validate(
 				[
 					'patient_amka'  => 'required',
-					'primary_doctor_amka'  => 'required',
+					'lead_doctor_amka'  => 'required',
 					'scheduled_date'  => 'required',
 					'status'  => 'required',
 					'code'  => 'required',
 				],
 				[
 					'patient_amka'  => ['required' => 'Επιλέξτε ασθενή'],
-					'primary_doctor_amka'  => ['required' => 'Επιλέξτε ιατρό'],
+					'lead_doctor_amka'  => ['required' => 'Επιλέξτε ιατρό'],
 					'scheduled_date'  => ['required' => 'Συμπληρώστε την ημερομηνία'],
 					'status'  => ['required' => 'Συμπληρώστε την κατάσταση'],
 					'code'  => ['required' => 'Επιλέξτε εξέταση'],
@@ -115,5 +116,13 @@ class Operations extends BaseController
 		echo view('templates/header', $data);
 		echo view('operations/form', $data);
 		echo view('templates/footer', $data);
+	}
+
+	/**
+	 * Get an instance of the main Model of this controller
+	 */
+	public function getModel()
+	{
+		return new OperationsModel();
 	}
 }

@@ -2,7 +2,7 @@
 
 namespace App\Database\Migrations;
 
-class Exams extends \CodeIgniter\Database\Migration
+class Operations extends \CodeIgniter\Database\Migration
 {
 
     public function up()
@@ -30,7 +30,7 @@ class Exams extends \CodeIgniter\Database\Migration
                 'constraint'     => 10,
                 'unsigned'       => TRUE,
             ],
-            'primary_doctor_amka'       => [
+            'lead_doctor_amka'       => [
                 'type'           => 'INT',
                 'constraint'     => 10,
                 'unsigned'       => TRUE
@@ -39,7 +39,7 @@ class Exams extends \CodeIgniter\Database\Migration
         $this->forge->addKey('id', TRUE);
         
         $this->forge->addForeignKey('patient_amka', 'patients', 'amka', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('primary_doctor_amka', 'doctors', 'amka', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('lead_doctor_amka', 'doctors', 'amka', 'CASCADE', 'CASCADE');
         $this->forge->createTable('operations');
         
     }

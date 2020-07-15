@@ -11,6 +11,18 @@
         <link href="<?php echo base_url(); ?>/css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <style>
+            .errors {
+                color: #721c24;
+                background-color: #f8d7da;
+                border-color: #f5c6cb;
+                padding: 2px;
+            }
+
+            .errors ul {
+                margin-top: 1rem;
+            }
+        </style>
     </head>
 
     <body class="sb-nav-fixed">
@@ -48,6 +60,10 @@
                             <a class="nav-link" href="/patients/create">
                                 <div class="sb-nav-link-icon"><i class="fas fa-plus"></i></div>
                                 Προσθήκη
+                            </a>
+                            <a class="nav-link" href="/stays">
+                                <div class="sb-nav-link-icon"><i class="fas fa-plus"></i></div>
+                                Εισαγωγές
                             </a>
 
                             <div class="sb-sidenav-menu-heading"><i class="fas fa-user-nurse"></i> Ιατροί</div>

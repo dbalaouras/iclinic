@@ -51,6 +51,11 @@ $routes->match(['get', 'post'], 'exams/update', 'Exams::update');
 $routes->get('exams/(:segment)', 'Exams::edit/$1');
 $routes->get('exams', 'Exams::index');
 
+$routes->match(['get', 'post'], 'stays/create', 'Stays::create');
+$routes->match(['get', 'post'], 'stays/update', 'Stays::update');
+$routes->get('stays/(:segment)', 'Stays::edit/$1');
+$routes->get('stays', 'Stays::index');
+
 $routes->get('(:any)', 'Home::index/$1');
 
 

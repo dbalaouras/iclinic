@@ -1,10 +1,8 @@
 <?php if (!empty($doctors) && is_array($doctors)) : ?>
-
-
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
-            Προβολή
+            Προβολή | <a href="/doctors/create" class="active" role="button" aria-pressed="true">Προσθήκη</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -20,7 +18,6 @@
                         </tr>
                     </thead>
                     <tbody>
-
                         <?php foreach ($doctors as $doctor) : ?>
                             <tr>
                                 <td><?= esc($doctor['amka']); ?></td>
@@ -38,7 +35,12 @@
         </div>
     </div>
 <?php else : ?>
-
-    <h3>Δεν υπάρχουν ιατροί στο σύστημα</h3>
-
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <p>Δεν υπάρχουν καταχωρήεσεις</p>
+                <a href="/doctors/create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Προσθήκη</a>
+            </div>
+        </div>
+    </div>
 <?php endif ?>

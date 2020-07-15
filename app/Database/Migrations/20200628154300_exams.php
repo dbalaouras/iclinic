@@ -4,7 +4,6 @@ namespace App\Database\Migrations;
 
 class Exams extends \CodeIgniter\Database\Migration
 {
-
     public function up()
     {
         $this->forge->addField([

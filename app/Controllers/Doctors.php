@@ -11,7 +11,7 @@ class Doctors extends BaseController
 
 	public function index()
 	{
-		$model = new DoctorsModel();
+		$model = $this->getModel();
 
 		$data = [
 			'doctors'  => $model->find(),
@@ -34,7 +34,7 @@ class Doctors extends BaseController
 		];
 
 		if ($this->request->getVar('update_success')) {
-			$data['messages'] =  "Επιτυχής ενημέρωση ιατρού.";
+			$data['messages'] =  "Επιτυχής αποθήκευση.";
 		}
 
 		if (empty($data['doctor'])) {
@@ -50,7 +50,7 @@ class Doctors extends BaseController
 
 	protected function store($is_new = true)
 	{
-		
+
 		$model = new DoctorsModel();
 
 		$data = [
@@ -70,7 +70,7 @@ class Doctors extends BaseController
 
 			if (!$this->validate(
 				[
-					'amka' => 'required|min_length[8]|max_length[255]',
+					'amka' => 'required|min_length[8]|max_length[10]',
 					'first_name'  => 'required',
 					'last_name'  => 'required',
 					'year_of_birth'  => 'required',
@@ -97,5 +97,13 @@ class Doctors extends BaseController
 		echo view('templates/header', $data);
 		echo view('doctors/form', $data);
 		echo view('templates/footer', $data);
+	}
+
+	/**
+	 * Get an instance of the main Model of this controller
+	 */
+	public function getModel()
+	{
+		return new DoctorsModel();
 	}
 }
