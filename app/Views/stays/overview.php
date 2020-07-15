@@ -34,7 +34,6 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-                <a href="/exams/create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Προσθήκη</a>
             </div>
         </div>
     </div>
