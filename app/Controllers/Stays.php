@@ -81,8 +81,8 @@ class Stays extends BaseController
 			'is_new' => $is_new
 		];
 
-		$data['stay']['start_datetime_iso8601'] = date('Y-m-d\TH:i', strtotime($this->request->getVar('start_datetime') ? $this->request->getVar('start_datetime') : $data['stay']['start_datetime']));
-		$data['stay']['end_datetime_iso8601'] = date('Y-m-d\TH:i', strtotime($this->request->getVar('end_datetime') ? $this->request->getVar('end_datetime') : $data['stay']['end_datetime']));
+		$data['stay']['start_datetime_iso8601'] = $data['stay']['start_datetime'] ? date('Y-m-d\TH:i', strtotime($this->request->getVar('start_datetime'))) : '';
+		$data['stay']['end_datetime_iso8601'] = $data['stay']['end_datetime'] ? date('Y-m-d\TH:i', strtotime($this->request->getVar('end_datetime'))) : '';
 
 		if ($this->request->getMethod() == 'post') {
 
